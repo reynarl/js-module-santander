@@ -115,3 +115,69 @@ function addItemToCart(cart, item, quantity){
 cart = addItemToCart(cart, 'phone', '1')
 
 console.log(cart)
+
+
+
+//  FUNCIONES DE PRIMERA CLASE
+/*
+se dice que una función es de primera clase cuando:
+  -puede ser pasada como argumento a otras funciones
+  -cuando puede ser asignada a una variable
+*/
+var square = function(number) {
+  return number * number;
+}
+
+var squareOfFour = square(4); //asignamos el valor de la funcion a una variable, por lo tanto es una funcion de primera clase
+
+
+
+/*  FUNCIONES DE ALTO ORDEN
+Cuando una función recibe otra función como parámetro se le llama de alto orden o de orden superior.
+  - Las más usadas son map(), filter() y reduce().
+*/
+
+//map(), aplica una función sobre cada elemento del arreglo. No muta el arreglo original.
+
+//filter() crea un nuevo arreglo, pero solo con aquellos elementos que retornen true por la función que actúa como predicado.
+const numbers = [1, 2, 3, 4, 5];
+
+const evenNumbers = numbers.filter(number => {
+  return number % 2 === 0;
+});
+
+console.log(evenNumbers); // [2, 4]
+
+//reduce() acumula o reduce todos los elementos a un valor único según la función dada.
+
+const sum = numbers.reduce((accumulator,currentValue) =>{
+  return accumulator + currentValue
+}, 0) // <- valor inicial
+
+console.log(sum) // 15
+
+// Ejemplo 3. Suma de dígitos
+
+let num = 12345
+//convertimos a string para aplicar el split y separarlos
+num = num.toString().split('')
+//recorremos con map para convertirlos a numero int uno por uno
+num = num.map( num => Number(num))
+//y así poder sumarlos
+const sumar = num.reduce((acumulador, valorActual) => {
+  return acumulador + valorActual
+}, 0)
+
+console.log(sumar)
+
+/* todas las funciones pueden ser encadenadas de la siguiente forma:
+function sumDigits(number) {
+  return number
+         .toString()
+         .split('')
+         .map(Number)
+         .reduce(function(a, b) {
+           return a + b;
+         }, 0)
+}
+*/
