@@ -140,6 +140,7 @@ Cuando una función recibe otra función como parámetro se le llama de alto ord
 //map(), aplica una función sobre cada elemento del arreglo. No muta el arreglo original.
 
 //filter() crea un nuevo arreglo, pero solo con aquellos elementos que retornen true por la función que actúa como predicado.
+////devuelve un nuevo array que contiene sólo los elementos para los que la devolución de llamada devuelve true.
 const numbers = [1, 2, 3, 4, 5];
 
 const evenNumbers = numbers.filter(number => {
